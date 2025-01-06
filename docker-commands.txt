@@ -1,0 +1,3 @@
+docker network create --driver bridge postgres_backuprestore_network
+
+docker run --platform linux/amd64 --name hammerdb-cloudtk -p 8081:8081 --network=postgres_backuprestore_network tpcorg/hammerdb:cloudtk

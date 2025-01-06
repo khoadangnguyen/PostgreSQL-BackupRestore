@@ -1,0 +1,8 @@
+openssl genpkey -algorithm RSA -out ./pg-backuprestore-data/conf/server.key
+
+openssl req -new -x509 -key ./pg-backuprestore-data/conf/server.key -out ./pg-backuprestore-data/conf/server.crt -days 3650
+
+chmod 600 ./pg-backuprestore-data/conf/server.key
+chmod 644 ./pg-backuprestore-data/conf/server.crt
+
+psql -h 127.0.0.1 -d postgres -U postgres sslmode=require

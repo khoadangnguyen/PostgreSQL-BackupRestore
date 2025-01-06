@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: bitnami/postgresql:17.2.0
+    container_name: postgres-backuprestore
+    env_file:
+      - .postgres-backuprestore-env
+    volumes:
+      - ./pg-backuprestore-data:/bitnami/postgresql
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres_backuprestore_network
+
+networks:
+  postgres_backuprestore_network:
+    external: true
